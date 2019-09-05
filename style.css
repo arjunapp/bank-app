@@ -1,0 +1,35 @@
+.search-container{
+    /* background-color: rgb(85, 64, 38); */
+   
+   
+}
+
+/* td{
+    word-break:break-all;
+} */
+
+table{
+    table-layout:fixed;
+}
+
+.j-container{
+    height:60vh;
+    overflow-y: auto;
+}
+.m-t-25{
+    margin-top: 25px;
+}
+.btn-city{
+    width:100%
+}
+
+.text-ellipsis{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+.loader-icon{
+    display: block;
+    margin: 0 auto;
+}

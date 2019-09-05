@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The App</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+
+<body ng-app="learnApp">
+
+    <div class="container" ng-controller="learnController">
+        <div class="jumbotron ng-cloak">
+            <h3 class="text-center">{{header}}</h3>
+
+            <!-- <div class="row">
+                <div class="col-md-10 search-container">
+                    <input type="text" class="form-control" ng-model="searchWord">
+                </div>
+                
+            </div> -->
+
+
+            <hr>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="dropdown m-t-25">
+                        <button class="btn btn-primary  btn-city dropdown-toggle" type="button"
+                            data-toggle="dropdown"><span ng-hide="!selectedCity">{{selectedCity|titleCase}}</span>
+                            <span ng-hide="selectedCity">Select City</span>
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="city in cities" ng-click="citySelected(city)">
+                                <a>{{city|titleCase}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div ng-hide="hideTable">
+                    <div class="col-md-2">
+                        <label for="bank">Bank</label>
+                        <input type="text" class="form-control" name="bank" ng-model="bFilter.bank_name">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="ifsc">IFSC</label>
+                        <input type="text" class="form-control" name="ifsc" ng-model="bFilter.ifsc">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" name="city" ng-model="bFilter.city">
+                    </div>
+                    <div class="col-md-2">
+                        <button ng-click="search()" class="m-t-25 btn btn-primary">Search</button>
+
+                    </div>
+                    <div class="col-md-2">
+                        <button ng-click="reset()" class="m-t-25  btn btn-warning">Reset</button>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- <hr>
+            <span>{{myData.length||0}} banks fetched</span> -->
+
+            <hr>
+            <div class="row j-container">
+                <div class="col-md-12">
+                    <img src="images/spinner.gif" class="loader-icon" alt="loading..." ng-hide="!loading">
+                    <table class="table table-bordered" ng-hide="hideTable">
+                        <thead>
+                            <th>Bank Name</th>
+                            <th>Branch</th>
+                            <th>Address</th>
+                            <th>IFSC</th>
+                            <th>CITY</th>
+                            <th>District</th>
+                            <th>State</th>
+                        </thead>
+
+                        <tbody >
+                            <tr ng-repeat="data in myData">
+                                <td>{{data.bank_name}}</td>
+                                <td>{{data.branch}}</td>
+                                <td title="{{data.address}}">
+                                    <div class="text-ellipsis">{{data.address}}</div>
+                                </td>
+                                <td>{{data.ifsc}}</td>
+                                <td>{{data.city}}</td>
+                                <td>{{data.district}}</td>
+                                <td>{{data.state}}</td>
+
+
+                            </tr>
+                            
+                        </tbody>
+                        
+
+                    </table>
+                    <span ng-if="myData.length == 0 && !hideTable">
+                            No data for this search!
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="bank-app.js"></script>
+    <script src="lib/fuse.min.js"></script>
+
+</body>
+
+</html>
